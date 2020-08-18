@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<!-- popup UI-->
+        <style>
+            #but1,#but2,#but3,#but4,#but5{
+                height: 30px;
+                width: 30px;
+                outline:none;
+                margin:5px;
+                cursor: pointer;
+                border-color:whitesmoke;
+                border-style: solid;
+            }
+            #but6,#but7, #but8{
+                background-color:red;
+                font:caption;
+                font-size:smaller;
+                margin-right:5px;
+                
+            }
+            #but6{
+                float:left;
+            }
+            #but7{
+                display:block;
+                float:left;               
+            }
+            #but8{
+                float:right;
+            }
+            #popupContainer{
+                width: 325px;
+                height: 75px;
+                background-color: cornflowerblue;
+                border-radius:10px;
+                opacity: 0.9;
+                position: relative;
+                display: inline-block;
+            }
+            
+            /* toggle switch for annotation box */
+            .switch{
+                position: relative;
+                float:right;
+                width:40px;
+                height:20px;
+                margin-right:10px;
+                margin-top:15px;
+            }
+            .switch input{
+                opacity: 0;
+                width:0;
+                height:0;
+            }
+            .slider{
+                position:absolute;
+                cursor: pointer;
+                top:0;
+                left:0;
+                right:0;
+                bottom:0;
+                background-color: black;
+                -webkit-transition: .4s;
+                transition: .4s;
+            }
+            #range{
+                float:left;
+            }
+            .slider:before{
+                position:absolute;
+                content:"";
+                height:15px;
+                width:20px;
+                left:4px;
+                bottom:4px;
+                background-color: white;
+                -webkit-transition: .4s;
+                transition: .4s;
+            }
+            input:checked + .slider{
+                background-color: #2196F3;
+            }
+            input:focus + .slider{
+                box-shadow: 0 0 1px #2196F3;
+            }
+            input:checked + .slider:before{
+                -webkit-transform: translateX(20px);
+                -ms-transform: translateX(20px);
+                transform: translateX(20px);
+            }
+            .slider.round{
+                border-radius:34px;
+                color:black;
+            }
+            .slider.round:before{
+                border-radius: 50%;
+            }
+            
+            #textColor{
+                color:black;
+                font-weight:bold;
+                margin-left:5px;
+            }
+            #Color{
+                float:left;
+                width:35px;
+                height:17px;
+                margin-left:5px;
+                margin-bottom: 5px;;
+
+            }
+            #colorPicker{
+                background-color: black;
+                cursor: pointer;
+            }
+            #exit{
+                cursor: pointer;
+
+            }
+            #annotate{
+                margin-right:20px;
+            }
+            .dropbtn{
+                background-color: #3498DB;
+                color: white;
+                border: none;
+                cursor: pointer;
+            }
+            .dropbtn:hover, .dropbtn:focus {
+                background-color: #2980B9;
+            }
+            .dropdown-content {
+            display:none;
+            position: absolute;
+            background-color: cornflowerblue;
+            min-width: 190px;
+            box-shadow: 10px 1px 16px 10px rgba(0,0,0,1.5);
+            z-index: 1;
+            }
+            #line{
+                width: 30px;
+            }
+
+            /* Change color of dropdown links on hover */
+            .dropdown-content a:hover {background-color: #ddd}
+
+            /* Show the dropdown menu  */
+            .show {display:block;}
+
+        </style>
+         
+    </head>
+    <body>
+        <div id="popupContainer">
+            <img id="but1" src="image/markupIcon.PNG" alt="draw" title="draw on page"/>
+            <img id="but2" src="image/shapesIcon.PNG"  class="dropbtn" alt="add shape" title="add shape to page"/>
+                <div id="myDropdown" class="dropdown-content">
+                    <img id="line" src="image/lineIcon.PNG" alt="line" title="draw straight line"/>
+                </div>
+            <img id="but3" src="image/cropIcon.PNG"alt = " crop section" title = " crop section of a page"/>
+            <img id="but4" src="image/textIcon.PNG" alt="add text" title="add text on page"/>
+            <img id="but5" src="image/captureIcon.PNG" title="take a snapshot of your page"/>
+           
+            <label class="switch" title="Annotate page(textbox popup container)">
+            <input type="checkbox" title="Annotate page(textbox popup container)">
+            <span class="slider round"></span>
+            </label>
+    
+            <div id="box">
+                <label for="colorPicker" id="textColor"></label>
+                <input  id="Color" type="color" value ="#000000"  alt="choose color" title="choose Pen color">
+                <input type = "button" id="but6" value="Eraser" alt="eraser" title="Erase sections of drawing">
+                <input type="button" id="but7" value="clear"  alt="clear all drawings" title="clear all drawings"> 
+                <input type ="button" id="but8" value="Stop"   alt="stop drawing" title="stop drawing (warning: Save work before!)">
+                <label for="penWidth" id="penW"></label>
+                <input type="range" id="range" min="1" max="20"  step="1" value="1"  alt="choose Pen size" title="choose Pen size" >
+            </div>
+
+        </div>
+
+        <script src = "popup.js"></script>
+
+    </body>
+</html>

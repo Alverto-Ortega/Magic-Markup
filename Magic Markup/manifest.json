@@ -1,0 +1,43 @@
+{  
+  "name": "Magic Markup",
+  "version": "1.3",
+  "description": "A markup tool for any webpage.",  
+  "permissions": ["activeTab", "storage","tabs","<all_urls>", "tabCapture"
+  ],
+  "browser_action": {
+    "default_icon": "image/mmIcon.png",
+    "default_title": "Click for page markup tools!"  ,
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "image/mmIcon.png",
+    "48": "image/mmIcon.png",
+    "128": "image/mmIcon.png"
+  }
+  ,
+  "background": {
+    "scripts" : ["background.js"],
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*/*"],
+      "js": ["canvasDrawing.js"]
+    }
+  ]
+  ,
+  "commands":{
+    
+    "_execute_browser_action": {
+      "suggested_key": {
+        "windows": "Ctrl+Shift+E",
+        "mac": "Command+Shift+E",
+        "chromeos": "Ctrl+Shift+E",
+        "linux": "Ctrl+Shift+E"
+      }
+    }
+  },
+  
+  "manifest_version": 2
+}
+
